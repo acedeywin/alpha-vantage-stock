@@ -29,8 +29,8 @@ const SearchForm: React.FC = () => {
    */
   const handleFetchStockSymbol = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const value = e.target.value;
-    dispatch(setSymbol(e.target.value));
+    const value = e.target.value.trim();
+    dispatch(setSymbol(value));
 
     const stockSymbolQuery: StockSymbolQueryType = {
       function: 'SYMBOL_SEARCH',
@@ -45,7 +45,16 @@ const SearchForm: React.FC = () => {
        * @function debounce
        * @param {Function} fetchStockSymbolData - The function it takes in
        */
-      dispatch(debounce(fetchStockSymbolData(stockSymbolQuery)));
+      debounce(
+        dispatch(
+          fetchStockSymbolData(stockSymbolQuery)
+        ) as unknown as AppDispatch,
+        300,
+        {
+          leading: true,
+          trailing: true,
+        }
+      );
     } else {
       dispatch(clearSuggestions());
     }
@@ -84,7 +93,8 @@ const SearchForm: React.FC = () => {
     dispatch(clearSuggestions());
   };
 
-  const disableButton = symbol === '' || timeSeries === '';
+  // Disable Button if symbol or timeSeries is empty
+  const disableButton = symbol.trim() === '' || timeSeries.trim() === '';
 
   return (
     <>
