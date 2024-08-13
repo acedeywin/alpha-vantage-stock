@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { FetchDataTypes } from '../types/stockTypes';
 
-export const baseUrl = 'https://www.alphavantage.co/query';
+export const baseUrl = import.meta.env.VITE_BASE_URL;
 
 export const STOCK_SYMBOL_API_KEY = import.meta.env.VITE_STOCK_SYMBOL_API_KEY;
 export const STOCK_API_KEY = import.meta.env.VITE_STOCK_API_KEY;

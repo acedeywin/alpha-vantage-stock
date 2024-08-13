@@ -45,15 +45,12 @@ const SearchForm: React.FC = () => {
        * @function debounce
        * @param {Function} fetchStockSymbolData - The function it takes in
        */
-      debounce(
-        dispatch(
-          fetchStockSymbolData(stockSymbolQuery)
-        ) as unknown as AppDispatch,
-        300,
-        {
+
+      dispatch(
+        debounce(fetchStockSymbolData(stockSymbolQuery), 300, {
           leading: true,
           trailing: true,
-        }
+        })
       );
     } else {
       dispatch(clearSuggestions());
