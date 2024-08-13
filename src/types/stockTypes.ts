@@ -36,10 +36,6 @@ export interface StockMatch {
   '9. matchScore': string;
 }
 
-export interface StockSearchResult {
-  bestMatches: StockMatch[];
-}
-
 export const initialState: StockState = {
   symbol: '',
   data: null,
