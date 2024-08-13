@@ -6,7 +6,7 @@ type NormalDataProps = {
   '5. volume': string;
 };
 
-type AdjustedDataProps = {
+export type AdjustedDataProps = {
   '1. open': string;
   '2. high': string;
   '3. low': string;

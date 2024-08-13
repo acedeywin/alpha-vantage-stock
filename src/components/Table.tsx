@@ -7,6 +7,7 @@ import {
 } from '../helpers';
 import { NormalData, AdjustedData, StockData } from '../types/stockTypes';
 import Pagination from './Pagination';
+import { getColor } from '../utils';
 
 type OwnProps = {
   symbol: string;
@@ -59,21 +60,29 @@ const Table: React.FC<Props> = ({ symbol, data, timeSeriesFunction }) => {
         <tbody>
           {currentData().map((date) => (
             <tr key={date}>
-              <td className="py-2 px-4 border">{date}</td>
+              <td className="py-2 px-4 border text-gray-500">{date}</td>
               {tableData.map((item) => (
-                <td key={item} className="px-3 border">
+                <td
+                  key={item}
+                  className={`py-2 px-4 border ${getColor(data[date], item)}`}
+                >
                   {data[date][item as keyof StockData]}
                 </td>
               ))}
               {timeSeriesFunction.includes('ADJUSTED') ? (
                 tableDataAdjusted.map((item) => (
-                  <td key={item} className="px-3 border">
+                  <td
+                    key={item}
+                    className={`py-2 px-4 border ${getColor(data[date], item)}`}
+                  >
                     {data[date][item as keyof StockData]}
                   </td>
                 ))
               ) : (
                 <>
-                  <td className="px-3 border">
+                  <td
+                    className={`py-2 px-4 border ${getColor(data[date], '5. volume')}`}
+                  >
                     {data[date]['5. volume' as keyof StockData]}
                   </td>
                 </>
