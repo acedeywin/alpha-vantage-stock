@@ -16,8 +16,8 @@ import { timeSeriesFunctions } from '../helpers';
 
 const SearchForm: React.FC = () => {
   const dispatch: AppDispatch = useDispatch();
-  const [timeSeries, setTimeSeries] = useState('');
-  const { symbol, suggestions, timeSeriesFunction } = useSelector(
+  const [timeSeries, setTimeSeries] = useState<string>('');
+  const { symbol, suggestions } = useSelector(
     (state: RootState) => state.stock
   );
 
@@ -84,6 +84,8 @@ const SearchForm: React.FC = () => {
     dispatch(clearSuggestions());
   };
 
+  const disableButton = symbol === '' || timeSeries === '';
+
   return (
     <>
       {/* Input fields container */}
@@ -116,8 +118,8 @@ const SearchForm: React.FC = () => {
       {/* Fetch data button */}
       <button
         onClick={handleFetchData}
-        className="bg-blue-500 text-white rounded p-2 mt-2 w-full cursor-pointer"
-        disabled={!symbol && !timeSeriesFunction}
+        className={`${disableButton ? 'bg-gray-300' : 'bg-blue-500 cursor-pointer'} text-white rounded p-2 mt-2 w-full`}
+        disabled={disableButton}
       >
         Fetch Data
       </button>
