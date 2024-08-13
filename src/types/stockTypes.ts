@@ -1,23 +1,27 @@
+type NormalDataProps = {
+  '1. open': string;
+  '2. high': string;
+  '3. low': string;
+  '4. close': string;
+  '5. volume': string;
+};
+
+type AdjustedDataProps = {
+  '1. open': string;
+  '2. high': string;
+  '3. low': string;
+  '4. close': string;
+  '5. adjusted close': string;
+  '6. volume': string;
+  '7. dividend amount': string;
+};
+
 export interface NormalData {
-  [key: string]: {
-    '1. open': string;
-    '2. high': string;
-    '3. low': string;
-    '4. close': string;
-    '5. volume': string;
-  };
+  [key: string]: NormalDataProps;
 }
 
 export interface AdjustedData {
-  [key: string]: {
-    '1. open': string;
-    '2. high': string;
-    '3. low': string;
-    '4. close': string;
-    '5. adjusted close': string;
-    '6. volume': string;
-    '7. dividend amount': string;
-  };
+  [key: string]: AdjustedDataProps;
 }
 
 export interface StockMatch {
@@ -67,4 +71,4 @@ export type StockSymbolQueryType = {
 };
 
 export type FetchDataTypes = StockQueryType | StockSymbolQueryType;
-export type StockData = NormalData | AdjustedData;
+export type StockData = NormalDataProps | AdjustedDataProps;

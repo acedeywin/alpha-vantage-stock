@@ -5,7 +5,7 @@ import {
   tableHeader,
   tableHeaderAdjusted,
 } from '../helpers';
-import { NormalData, AdjustedData } from '../types/stockTypes';
+import { NormalData, AdjustedData, StockData } from '../types/stockTypes';
 import Pagination from './Pagination';
 
 type OwnProps = {
@@ -62,18 +62,20 @@ const Table: React.FC<Props> = ({ symbol, data, timeSeriesFunction }) => {
               <td className="py-2 px-4 border">{date}</td>
               {tableData.map((item) => (
                 <td key={item} className="px-3 border">
-                  {data[date][item]}
+                  {data[date][item as keyof StockData]}
                 </td>
               ))}
               {timeSeriesFunction.includes('ADJUSTED') ? (
                 tableDataAdjusted.map((item) => (
                   <td key={item} className="px-3 border">
-                    {data[date][item]}
+                    {data[date][item as keyof StockData]}
                   </td>
                 ))
               ) : (
                 <>
-                  <td className="px-3 border">{data[date]['5. volume']}</td>
+                  <td className="px-3 border">
+                    {data[date]['5. volume' as keyof StockData]}
+                  </td>
                 </>
               )}
             </tr>
