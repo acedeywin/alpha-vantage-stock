@@ -34,7 +34,7 @@ const SearchForm: React.FC = () => {
 
     const stockSymbolQuery: StockSymbolQueryType = {
       function: 'SYMBOL_SEARCH',
-      keywords: symbol,
+      keywords: value.toLocaleUpperCase(),
     };
 
     if (value) {
@@ -57,9 +57,9 @@ const SearchForm: React.FC = () => {
    * @function handleFetchData
    */
   const handleFetchData = () => {
+    dispatch(setTimeSeriesFunction(timeSeries));
     if (symbol) {
       dispatch(fetchStockData());
-      dispatch(setTimeSeriesFunction(timeSeries));
     }
   };
 
