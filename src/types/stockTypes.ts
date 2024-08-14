@@ -43,6 +43,7 @@ export const initialState: StockState = {
   error: null,
   suggestions: [],
   timeSeriesFunction: '',
+  companyName: '',
 };
 
 export type StockState = {
@@ -52,6 +53,7 @@ export type StockState = {
   error: string | null;
   suggestions: StockMatch[];
   timeSeriesFunction: string;
+  companyName: string;
 };
 
 export type StockQueryType = {

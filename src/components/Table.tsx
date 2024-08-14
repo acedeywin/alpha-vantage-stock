@@ -13,11 +13,17 @@ type OwnProps = {
   symbol: string;
   data: NormalData | AdjustedData;
   timeSeriesFunction: string;
+  companyName: string;
 };
 
 type Props = OwnProps;
 
-const Table: React.FC<Props> = ({ symbol, data, timeSeriesFunction }) => {
+const Table: React.FC<Props> = ({
+  symbol,
+  data,
+  timeSeriesFunction,
+  companyName,
+}) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage = 10;
 
@@ -35,7 +41,9 @@ const Table: React.FC<Props> = ({ symbol, data, timeSeriesFunction }) => {
   return (
     <div>
       {/* Stock data table */}
-      <h2 className="text-lg font-bold mb-4">Stock Data for {symbol}</h2>
+      <h2 className="text-lg font-bold mb-4">
+        Stock Data for {`${companyName} (${symbol})`}
+      </h2>
       <table className="min-w-full bg-white">
         <thead>
           <tr>

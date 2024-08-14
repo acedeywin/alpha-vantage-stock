@@ -9,8 +9,9 @@ import {
   fetchStockSymbolData,
   clearSuggestions,
   setTimeSeriesFunction,
+  setCompanyName,
 } from '../state/stock/stockSlice';
-import { StockSymbolQueryType } from '../types/stockTypes';
+import { StockMatch, StockSymbolQueryType } from '../types/stockTypes';
 import SearchAutoComplete from './SearchAutoComplete';
 import { timeSeriesFunctions } from '../helpers';
 
@@ -85,8 +86,9 @@ const SearchForm: React.FC = () => {
    * @function handleSuggestionClick
    * @param {String} suggestion - The selected suggestion
    */
-  const handleSymbolSuggestionClick = (suggestion: string) => {
-    dispatch(setSymbol(suggestion));
+  const handleSymbolSuggestionClick = (suggestion: StockMatch) => {
+    dispatch(setSymbol(suggestion['1. symbol']));
+    dispatch(setCompanyName(suggestion['2. name']));
     dispatch(clearSuggestions());
   };
 

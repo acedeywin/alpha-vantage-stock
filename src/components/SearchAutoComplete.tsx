@@ -7,7 +7,7 @@ import { AppDispatch } from '../state/store';
 
 type OwnProps = {
   searchedData: StockMatch[];
-  handleSymbolSuggestionClick: (suggestion: string) => void;
+  handleSymbolSuggestionClick: (suggestion: StockMatch) => void;
 };
 
 type Props = OwnProps;
@@ -47,9 +47,7 @@ const SearchAutoComplete: React.FC<Props> = ({
           {searchedData.map((suggestion: StockMatch) => (
             <li
               key={suggestion['1. symbol']}
-              onClick={() =>
-                handleSymbolSuggestionClick(suggestion['1. symbol'])
-              }
+              onClick={() => handleSymbolSuggestionClick(suggestion)}
               className="p-2 cursor-pointer hover:bg-gray-200"
             >
               {suggestion['1. symbol']} - {suggestion['2. name']}

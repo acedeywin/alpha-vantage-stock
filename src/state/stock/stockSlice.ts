@@ -112,6 +112,16 @@ const stockSlice = createSlice({
     setTimeSeriesFunction: (state, action) => {
       state.timeSeriesFunction = action.payload;
     },
+    /**
+     * Set the stock symbol.
+     *
+     * @function setSymbol
+     * @param {Object} state - The current state
+     * @param {Object} action - The dispatched action containing the new symbol
+     */
+    setCompanyName: (state, action) => {
+      state.companyName = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -150,6 +160,10 @@ const stockSlice = createSlice({
   },
 });
 
-export const { setSymbol, clearSuggestions, setTimeSeriesFunction } =
-  stockSlice.actions;
+export const {
+  setSymbol,
+  clearSuggestions,
+  setTimeSeriesFunction,
+  setCompanyName,
+} = stockSlice.actions;
 export default stockSlice.reducer;

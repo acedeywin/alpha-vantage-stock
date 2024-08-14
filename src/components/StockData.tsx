@@ -6,9 +6,8 @@ import SearchForm from './SearchForm';
 import Table from './Table';
 
 const StockData: React.FC = () => {
-  const { symbol, data, loading, error, timeSeriesFunction } = useSelector(
-    (state: RootState) => state.stock
-  );
+  const { symbol, data, loading, error, timeSeriesFunction, companyName } =
+    useSelector((state: RootState) => state.stock);
 
   return (
     <div className="p-4 max-w-xl mx-auto">
@@ -22,6 +21,7 @@ const StockData: React.FC = () => {
           symbol={symbol}
           data={data}
           timeSeriesFunction={timeSeriesFunction}
+          companyName={companyName}
         />
       )}
     </div>
