@@ -84,7 +84,7 @@ const SearchForm: React.FC = () => {
    * Handle click on a suggestion.
    *
    * @function handleSuggestionClick
-   * @param {String} suggestion - The selected suggestion
+   * @param {StockMatch} suggestion - The selected symbol and company name
    */
   const handleSymbolSuggestionClick = (suggestion: StockMatch) => {
     dispatch(setSymbol(suggestion['1. symbol']));
