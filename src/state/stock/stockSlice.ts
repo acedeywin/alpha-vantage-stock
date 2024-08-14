@@ -113,11 +113,11 @@ const stockSlice = createSlice({
       state.timeSeriesFunction = action.payload;
     },
     /**
-     * Set the stock symbol.
+     * Set the stock company name.
      *
-     * @function setSymbol
+     * @function setCompanyName
      * @param {Object} state - The current state
-     * @param {Object} action - The dispatched action containing the new symbol
+     * @param {Object} action - The dispatched action containing the company name
      */
     setCompanyName: (state, action) => {
       state.companyName = action.payload;
